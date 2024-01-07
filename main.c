@@ -6,11 +6,19 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:37:23 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/07 05:47:22 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/07 09:32:35 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	my_mlx_pp(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	*(unsigned int*)dst = color;
+}
 
 int	diff(int x1, int x2)
 {
@@ -169,8 +177,11 @@ void bresenham_algo(t_point s, t_point e, t_neox *neox, t_buddha v)
 	max_step = max_v(abs_v(x_step), abs_v(y_step));
 	(x_step /= max_step, y_step /= max_step);
 	while((int) (c.x - e.x) || (int) (c.y - e.y))
-		mlx_pixel_put(v.mlx, v.win, c.x, c.y, grad_c(s, c, e, neox)),
-			(c.x += x_step , c.y += y_step);
+	{
+		my_mlx_pp(v.img, c.x, c.y, grad_c(s, c, e, neox));
+		(c.x += x_step , c.y += y_step);
+	}
+	
 }
 
 int	get_cols(char *file_name)
@@ -219,6 +230,9 @@ void	init_v(t_buddha *v, char *file_name)
 {
 	v->mlx = mlx_init();
 	v->win = mlx_new_window(v->mlx, HEIGHT, WIDTH, "BUDDHA X NEOX - FDF");
+	v->img->img = mlx_new_image(v->mlx, WIDTH, HEIGHT);
+	v->img->addr = mlx_get_data_addr(v->img->img, &v->img->bpp,
+	&v->img->line_len, &v->img->endian);
 	v->cols = get_cols(file_name);
 	v->rows = get_rows(file_name);
 	v->angle = 0.523599;
@@ -231,7 +245,7 @@ void	init_v(t_buddha *v, char *file_name)
 	v->m->is_pressed = 0;
 }
 
-void	picasso(t_buddha v, t_neox *neox)
+void	picasso(t_buddha *v, t_neox *neox)
 {
 	t_point		*s;
 	t_point		*e;
@@ -239,22 +253,23 @@ void	picasso(t_buddha v, t_neox *neox)
 	s = malloc(sizeof(t_point));
 	e = malloc(sizeof(t_point));
 	s->y = -1;
-	while (++s->y < v.rows)
+	while (++s->y < v->rows)
 	{
 		s->x = -1;
-		while(++s->x < v.cols)
+		while(++s->x < v->cols)
 		{
-			if (s->x + 1 < v.cols)
+			if (s->x + 1 < v->cols)
 				e->x = s->x + 1,
 					e->y = s->y,
-						bresenham_algo(*s, *e, neox, v);
-			if (s->y + 1 < v.rows)
+						bresenham_algo(*s, *e, neox, *v);
+			if (s->y + 1 < v->rows)
 			{
 				(e->x = s->x), (e->y = s->y + 1);
-				bresenham_algo(*s, *e, neox, v);
+				bresenham_algo(*s, *e, neox, *v);
 			}
 		}
 	}
+	mlx_put_image_to_window(v->mlx, v->win, v->img->img, 0 ,0);
 }
 
 int	key_hook(int key, t_buddha *v)
@@ -284,7 +299,7 @@ int	key_hook(int key, t_buddha *v)
 		v->y_teta += 0.1;
 	printf("key %d\n", key);
 	mlx_clear_window(v->mlx, v->win);
-	picasso(*v, v->neox);
+	picasso(v, v->neox);
 	return (0);
 }
 
@@ -313,7 +328,7 @@ int	mouse_clicked(int mouse_hook, int x, int y, t_buddha *v)
 
 	printf("mouse clicked %d:%d  -- %d\n", x, y, v->m->is_pressed);
 	mlx_clear_window(v->mlx, v->win);
-	picasso(*v, v->neox);
+	picasso(v, v->neox);
 	return (0);
 }
 
@@ -328,27 +343,31 @@ int	mouse_move(int x, int y, t_buddha *v)
 		v->y_teta += (x - v->m->x0) * 0.002;
 		v->x_teta += (y - v->m->y0) * 0.002;
 		mlx_clear_window(v->mlx, v->win);
-		picasso(*v, v->neox);
+		picasso(v, v->neox);
 	}
 	printf("mouse moved %d:%d\n", x, y);
 	return (0);
 }
+
+
+
 int	main (int ac, char **av)
 {
 	t_buddha	*v;
 
 	v = malloc(sizeof(t_buddha));
 	v->m = malloc(sizeof(t_mouse));
+	v->img = malloc(sizeof(t_img));
 	ft_check_args(ac, av), ft_parser(&(v->neox), av);
 	init_v(v, av[1]);
 	
-	picasso(*v, v->neox);
+	picasso(v, v->neox);
+
 	mlx_hook(v->win, 2, 2, key_hook, v);
 	
 	mlx_hook(v->win, 4, 2, mouse_clicked, v);
 	mlx_hook(v->win, 6, 2, mouse_move, v);
 	mlx_hook(v->win, 5, 2, mouse_release, v);
-	
 	mlx_loop(v->mlx);
 	my_malloc(0, 2);
 }

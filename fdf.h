@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/06 21:17:46 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/07 08:57:44 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,15 @@ typedef	struct s_point
 	int		color;
 }	t_point;
 
+typedef struct	s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}	t_img;
+
 typedef	struct s_buddha
 {
 	int		rows;
@@ -69,10 +78,9 @@ typedef	struct s_buddha
 	double	angle;
 	void	*mlx;
 	void	*win;
-	
 	t_neox	*neox;
 	t_mouse *m;
-	
+	t_img	*img;
 }	t_buddha;
 
 void	ft_error();
