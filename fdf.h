@@ -6,12 +6,15 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/05 01:37:00 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/06 21:17:46 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
+
+# define HEIGHT	900
+# define WIDTH	900
 
 # include <stdio.h>
 #include "minilibx_macos/mlx.h"
@@ -36,6 +39,22 @@ typedef struct s_data
 	struct s_data	*next;
 }	t_data;
 
+typedef struct s_mouse
+{
+	int	x;
+	int	y;
+	int	x0;
+	int	y0;
+	int	is_pressed;
+}	t_mouse;
+
+typedef	struct s_point
+{
+	float	x;
+	float	y;
+	float	z;
+	int		color;
+}	t_point;
 
 typedef	struct s_buddha
 {
@@ -44,10 +63,16 @@ typedef	struct s_buddha
 	int		zoom;
 	int		shift_x;
 	int		shift_y;
+	double	x_teta;
+	double	y_teta;
+	double	z_teta;
 	double	angle;
 	void	*mlx;
 	void	*win;
+	
 	t_neox	*neox;
+	t_mouse *m;
+	
 }	t_buddha;
 
 void	ft_error();
