@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:37:23 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/07 09:32:35 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/08 15:32:28 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void	my_mlx_pp(t_img *img, int x, int y, int color)
 {
 	char	*dst;
-
-	dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	*(unsigned int*)dst = color;
+	if (x < HEIGHT && y < WIDTH && x >= 0 && y >= 0)
+	{
+		dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
+		*(unsigned int*)dst = color;
+	}
 }
 
 int	diff(int x1, int x2)
@@ -113,7 +115,7 @@ int	get_c(int x, int y, t_neox *neox)
 	if (neox->line[x][0])
 		(!color) && (color = 0x0000FF);
 	else
-		color = 0xFFFFFF;
+		color = 0x00FFFF;
 	return (color);
 }
 double	get_percent(float start, float current, float end)
@@ -244,7 +246,14 @@ void	init_v(t_buddha *v, char *file_name)
 	v->shift_y = 300;
 	v->m->is_pressed = 0;
 }
+void	ft_bzero(void	*s, size_t n)
+{
+	int index;
 
+	index = -1;
+	while (n--)
+		((char *)s)[++index] = 0;
+}
 void	picasso(t_buddha *v, t_neox *neox)
 {
 	t_point		*s;
@@ -252,6 +261,7 @@ void	picasso(t_buddha *v, t_neox *neox)
 	
 	s = malloc(sizeof(t_point));
 	e = malloc(sizeof(t_point));
+	ft_bzero(v->img->addr, HEIGHT * WIDTH * (v->img->bpp/8));
 	s->y = -1;
 	while (++s->y < v->rows)
 	{
@@ -279,13 +289,13 @@ int	key_hook(int key, t_buddha *v)
 	if (key == 125)
 		if (v->shift_y > 30)
 			v->shift_y -= 30;
-			
+
 	if (key == 124)
 		if (v->shift_x > 30)
 			v->shift_x -= 30;
 	if (key == 123)
 		v->shift_x += 30;
-		
+
 	if (key == 116)
 		v->angle += 0.1;
 	if (key == 121)
@@ -325,9 +335,7 @@ int	mouse_clicked(int mouse_hook, int x, int y, t_buddha *v)
 	if (mouse_hook == 5)
 		if (v->zoom > 2)
 			v->zoom -= 2;
-
 	printf("mouse clicked %d:%d  -- %d\n", x, y, v->m->is_pressed);
-	mlx_clear_window(v->mlx, v->win);
 	picasso(v, v->neox);
 	return (0);
 }
@@ -342,29 +350,23 @@ int	mouse_move(int x, int y, t_buddha *v)
 	{
 		v->y_teta += (x - v->m->x0) * 0.002;
 		v->x_teta += (y - v->m->y0) * 0.002;
-		mlx_clear_window(v->mlx, v->win);
 		picasso(v, v->neox);
 	}
 	printf("mouse moved %d:%d\n", x, y);
 	return (0);
 }
 
-
-
 int	main (int ac, char **av)
 {
 	t_buddha	*v;
 
-	v = malloc(sizeof(t_buddha));
-	v->m = malloc(sizeof(t_mouse));
-	v->img = malloc(sizeof(t_img));
+	v = my_malloc(sizeof(t_buddha), 1);
+	v->m = my_malloc(sizeof(t_mouse), 1);
+	v->img = my_malloc(sizeof(t_img), 1);
 	ft_check_args(ac, av), ft_parser(&(v->neox), av);
 	init_v(v, av[1]);
-	
 	picasso(v, v->neox);
-
 	mlx_hook(v->win, 2, 2, key_hook, v);
-	
 	mlx_hook(v->win, 4, 2, mouse_clicked, v);
 	mlx_hook(v->win, 6, 2, mouse_move, v);
 	mlx_hook(v->win, 5, 2, mouse_release, v);
