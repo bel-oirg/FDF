@@ -6,13 +6,13 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:37:28 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/05 01:37:30 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/09 03:38:06 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_error()
+void	ft_error(void)
 {
 	write(2, "Invalid file Input !!\n", ft_strlen("Invalid file Input !!\n"));
 	my_malloc(0, 0);

@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/07 08:57:44 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/09 03:28:49 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # define HEIGHT	900
 # define WIDTH	900
 
+# include "minilibx_macos/mlx.h"
 # include <stdio.h>
-#include "minilibx_macos/mlx.h"
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
@@ -48,7 +48,7 @@ typedef struct s_mouse
 	int	is_pressed;
 }	t_mouse;
 
-typedef	struct s_point
+typedef struct s_point
 {
 	float	x;
 	float	y;
@@ -56,7 +56,7 @@ typedef	struct s_point
 	int		color;
 }	t_point;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	char	*addr;
@@ -65,7 +65,7 @@ typedef struct	s_img
 	int		endian;
 }	t_img;
 
-typedef	struct s_buddha
+typedef struct s_buddha
 {
 	int		rows;
 	int		cols;
@@ -79,30 +79,68 @@ typedef	struct s_buddha
 	void	*mlx;
 	void	*win;
 	t_neox	*neox;
-	t_mouse *m;
+	t_mouse	*m;
 	t_img	*img;
 }	t_buddha;
 
-void	ft_error();
+void	ft_error(void);
 int		ft_isdigit(int c);
 int		ft_strlen_line(char *str);
 int		ft_search(char *str);
 int		ft_convert(char *str);
 void	*my_malloc(size_t size, int mode);
-size_t	ft_strlen(char *str);
+int		ft_strlen(char *str);
 int		ft_atoi(const char *str);
 char	*my_strtok(char *src, char *delim);
 char	*my_strtok_two(char *src, char *delim);
 void	ft_check_args(int ac, char **av);
-int		ft_parser(t_neox **neox, char **av);
-char	*my_strcpy(char *s1, char *s2, char *str);
-char	*ft_strjoin(char *s1, char *s2);
-char	*ft_read_all(int fd, char *str);
 char	*get_next_line(int fd);
-int		find_line(char *str);
-char	*get_the_line(char *str);
-char	*get_the_rest(char *str, size_t size);
-int		ft_str_line(char *str);
 char	**ft_split(char *str, char c);
+
+//next line
+void	free_out(char *out_free);
+char	*ft_strjoin(char *s1, char *s2);
+int		have_n(char	*temp);
+char	*print_line(char **temp);
+char	*get_next_line(int fd);
+
+//parser_fdf
+void	parser(t_neox **neox, char **argv);
+
+//mouse
+int		mouse_release(int mouse_hook, int x, int y, t_buddha *v);
+int		mouse_clicked(int mouse_hook, int x, int y, t_buddha *v);
+int		mouse_move(int x, int y, t_buddha *v);
+
+//gradient
+int		grad_c(t_point s, t_point c, t_point e);
+void	init_p(t_point *p, t_neox *neox, t_buddha v);
+
+//keyboard
+int		key_hook(int key, t_buddha *v);
+
+//ft_convert
+int		ft_convert(char *str);
+
+//algo_utils
+void	ft_bzero(void	*s, size_t n);
+float	get_z(int x, int y, t_neox *neox);
+int		get_rows(char *file_name);
+int		get_cols(char *file_name);
+void	f_matrix(char **str);
+
+//three_dim
+void	three_dim(float *x, float *y, float *z, t_buddha v);
+void	iso(float *x, float *y, float *z, t_buddha v);
+
+//math_utils
+int		diff(int x1, int x2);
+int		abs_v(int val);
+int		max_v(int a, int b);
+
+//algo
+void	picasso(t_buddha *v, t_neox *neox);
+void	dda_algo(t_point s, t_point e, t_neox *neox, t_buddha v);
+void	my_mlx_pp(t_img *img, int x, int y, int color);
 
 #endif
