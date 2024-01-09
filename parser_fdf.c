@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:49:12 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/09 03:45:21 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/09 03:58:19 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,23 @@ int	ft_atoi(const char *str)
 {
 	long int	num;
 	int			i;
-	int			signe;
+	int			sign;
+	int			checker;
 
-	(1) && (i = 0, signe = 1, num = 0);
+	if (!str)
+		return (0);
+	(1) && (i = 0, sign = 1, num = 0, checker = 0);
 	if (str[i] == '-' || str[i] == '+')
-		(1) && (str[i++] == '-') && (signe = -1);
+		if (str[i++] == '-')
+			sign = -1;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		num = (num * 10) + (str[i] - 48);
-		i++;
+		num = (num * 10) + (str[i++] - 48);
+		checker = 1;
 	}
-	return (num * signe);
+	if (str[i] || !checker)
+		write(1, "Invalid Content\n", ft_strlen("Invalid Content\n"));
+	return (num * sign);
 }
 
 int	get_cols_l(char *line)
