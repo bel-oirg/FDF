@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:49:12 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/09 03:58:19 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:41:22 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,15 @@ void	parser(t_neox **neox, char **argv)
 	while (line)
 	{
 		parse_line(line, cols, node);
+		free(line);
 		line = get_next_line(fd);
 		node->next = NULL;
 		if (!line)
 			break ;
 		node->next = my_malloc(sizeof(t_neox), 1);
+		node->next->line = NULL;
 		node = node->next;
 	}
+	free(line);
 	close(fd);
 }

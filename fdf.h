@@ -6,15 +6,15 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/09 03:28:49 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:30:26 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
+# define WIDTH	1600
 # define HEIGHT	900
-# define WIDTH	900
 
 # include "minilibx_macos/mlx.h"
 # include <stdio.h>
@@ -84,15 +84,14 @@ typedef struct s_buddha
 }	t_buddha;
 
 void	ft_error(void);
-int		ft_isdigit(int c);
-int		ft_strlen_line(char *str);
+
+
 int		ft_search(char *str);
-int		ft_convert(char *str);
+
 void	*my_malloc(size_t size, int mode);
 int		ft_strlen(char *str);
 int		ft_atoi(const char *str);
-char	*my_strtok(char *src, char *delim);
-char	*my_strtok_two(char *src, char *delim);
+
 void	ft_check_args(int ac, char **av);
 char	*get_next_line(int fd);
 char	**ft_split(char *str, char c);
@@ -118,6 +117,7 @@ void	init_p(t_point *p, t_neox *neox, t_buddha v);
 
 //keyboard
 int		key_hook(int key, t_buddha *v);
+int		destroy_fdf(t_buddha *v);
 
 //ft_convert
 int		ft_convert(char *str);
@@ -127,7 +127,10 @@ void	ft_bzero(void	*s, size_t n);
 float	get_z(int x, int y, t_neox *neox);
 int		get_rows(char *file_name);
 int		get_cols(char *file_name);
+
+//cleaning
 void	f_matrix(char **str);
+void	lst_f(t_neox **neox);
 
 //three_dim
 void	three_dim(float *x, float *y, float *z, t_buddha v);
@@ -137,10 +140,9 @@ void	iso(float *x, float *y, float *z, t_buddha v);
 int		diff(int x1, int x2);
 int		abs_v(int val);
 int		max_v(int a, int b);
+int		min_v(int a, int b);
 
 //algo
 void	picasso(t_buddha *v, t_neox *neox);
-void	dda_algo(t_point s, t_point e, t_neox *neox, t_buddha v);
-void	my_mlx_pp(t_img *img, int x, int y, int color);
 
 #endif

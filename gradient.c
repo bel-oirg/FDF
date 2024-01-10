@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 00:07:48 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/09 03:38:49 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/10 08:38:20 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,18 @@ int	get_c(int x, int y, t_neox *neox)
 {
 	int	color;
 	int	default_col;
+	int	z;
 
 	if (x < 0 || y < 0 || !neox)
 		return (-1);
-	default_col = 0x00f297;
+	default_col = 0x000FF7;
 	while (y-- && neox)
 		neox = neox->next;
+	z = neox->line[x][0];
 	color = neox->line[x][1];
-	if (neox->line[x][0])
-		(!color) && (color = 0x0000FF);
-	else
-		color = 0x00FFFF;
+	if (!color)
+		(z > 0) && (color = 0xFF000F * z),
+		(z <= 0) && (color = default_col);
 	return (color);
 }
 

@@ -6,34 +6,11 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:43 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/09 03:40:14 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:29:44 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-int	ft_strlen_line(char *str)
-{
-	int		count;
-	char	*line;
-
-	line = my_strtok(str, " ");
-	count = 0;
-	if (!line)
-		return (0);
-	while (line)
-	{
-		if (ft_atoi(line) >= 0 || ft_atoi(line) <= 0)
-			count++;
-		line = my_strtok(NULL, " ");
-	}
-	return (count);
-}
 
 int	ft_search(char *str)
 {

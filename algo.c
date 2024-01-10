@@ -6,24 +6,24 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 03:21:38 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/09 03:32:02 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/10 10:18:25 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	my_mlx_pp(t_img *img, int x, int y, int color)
+static void	my_mlx_pp(t_img *img, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < HEIGHT && y < WIDTH && x >= 0 && y >= 0)
+	if (y < HEIGHT && x < WIDTH && x >= 0 && y >= 0)
 	{
 		dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
 		*(unsigned int *)dst = color;
 	}
 }
 
-void	dda_algo(t_point s, t_point e, t_neox *neox, t_buddha v)
+static void	dda_algo(t_point s, t_point e, t_neox *neox, t_buddha v)
 {
 	float	x_step;
 	float	y_step;
@@ -54,8 +54,8 @@ void	picasso(t_buddha *v, t_neox *neox)
 	t_point		*s;
 	t_point		*e;
 
-	s = malloc(sizeof(t_point));
-	e = malloc(sizeof(t_point));
+	s = my_malloc(sizeof(t_point), 1);
+	e = my_malloc(sizeof(t_point), 1);
 	ft_bzero(v->img->addr, HEIGHT * WIDTH * (v->img->bpp / 8));
 	s->y = -1;
 	while (++s->y < v->rows)

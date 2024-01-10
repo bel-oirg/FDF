@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 02:49:23 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/09 03:42:21 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:06:12 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,19 +69,4 @@ float	get_z(int x, int y, t_neox *neox)
 	while (y-- && neox)
 		neox = neox->next;
 	return ((float) neox->line[x][0]);
-}
-
-void	f_matrix(char **str)
-{
-	int	index;
-
-	if (!str || !*str)
-		return ;
-	index = -1;
-	while (str[++index])
-	{
-		free(str[index]);
-		str[index] = NULL;
-	}
-	str = NULL;
 }
