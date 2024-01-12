@@ -7,7 +7,7 @@ OBJ = ${SRC:.c=.o}
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror #-fsanitize=address 
+FLAGS = -Wall -Wextra -Werror -fsanitize=address 
 GFLAGS = -lmlx -Lminilibx_macos -framework OpenGL -framework APPKit
 NAME = fdf
 

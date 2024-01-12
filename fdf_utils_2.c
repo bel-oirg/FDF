@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:43 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/10 11:29:44 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:47:05 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,37 @@
 int	ft_search(char *str)
 {
 	char	ptr[4];
+	int		size;
+	int		start;
 	int		i;
 	int		k;
-	int		j;
 
+
+	size = ft_strlen(str);
 	i = 0;
 	k = 0;
 	ptr[0] = '.';
 	ptr[1] = 'f';
 	ptr[2] = 'd';
 	ptr[3] = 'f';
-	while (str[i])
+	start = 4;
+	while (size >= 4)
 	{
-		if (str[i] == '.')
+		if (str[size - start] == '.')
 		{
-			j = i;
-			while (str[j] && str[j] == ptr[k])
-				(j++) && (k++);
-			if (k == 4 && !str[j])
+			while (start > 0 && str[size - start] == ptr[4 - start])
+				start--;
+			if (start == 0)
 				return (1);
 		}
-		i++;
 	}
 	return (0);
 }
 
-void	ft_check_args(int ac, char **av)
+void	ft_check_args(int argc, char **argv)
 {
-	(ac != 2) && (write(2, "Invalid Arguments", 18), exit(1), 0);
-	(!ft_search(av[1])) && (write(2, "Invalid file type\n", 18), exit(1), 0);
+
+	(argc != 2) && (write(2, "Invalid Arguments\n", 19), exit(1), 0);
+	(!ft_search(argv[1])) && (write(2, "Invalid file type\n", 19), exit(1), 0);
+	// (!get_cols(argv[1])) && (write(2, "Empty file\n", 12), exit(1), 0);
 }

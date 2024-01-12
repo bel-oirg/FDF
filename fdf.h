@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/10 11:30:26 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/12 11:21:42 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <math.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 425161516
 # endif
 
 typedef struct s_neox
@@ -72,10 +72,10 @@ typedef struct s_buddha
 	int		zoom;
 	int		shift_x;
 	int		shift_y;
+	int		color_amp;
 	double	x_teta;
 	double	y_teta;
 	double	z_teta;
-	double	angle;
 	void	*mlx;
 	void	*win;
 	t_neox	*neox;
@@ -83,11 +83,8 @@ typedef struct s_buddha
 	t_img	*img;
 }	t_buddha;
 
-void	ft_error(void);
-
 
 int		ft_search(char *str);
-
 void	*my_malloc(size_t size, int mode);
 int		ft_strlen(char *str);
 int		ft_atoi(const char *str);
@@ -117,7 +114,7 @@ void	init_p(t_point *p, t_neox *neox, t_buddha v);
 
 //keyboard
 int		key_hook(int key, t_buddha *v);
-int		destroy_fdf(t_buddha *v);
+
 
 //ft_convert
 int		ft_convert(char *str);
@@ -130,11 +127,11 @@ int		get_cols(char *file_name);
 
 //cleaning
 void	f_matrix(char **str);
-void	lst_f(t_neox **neox);
+void	ft_error(void);
+int		destroy_fdf(t_buddha *v);
 
 //three_dim
 void	three_dim(float *x, float *y, float *z, t_buddha v);
-void	iso(float *x, float *y, float *z, t_buddha v);
 
 //math_utils
 int		diff(int x1, int x2);

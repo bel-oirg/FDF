@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 00:07:48 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/10 08:38:20 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/12 16:52:14 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,15 @@ int	get_c(int x, int y, t_neox *neox)
 	color = neox->line[x][1];
 	if (!color)
 		(z > 0) && (color = 0xFF000F * z),
-		(z <= 0) && (color = default_col);
+		(z < 0) && (color = 0x00FF0F * -z),
+		(!z) && (color = default_col);
 	return (color);
 }
 
 void	init_p(t_point *p, t_neox *neox, t_buddha v)
 {
 	p->z = get_z(p->x, p->y, neox);
-	p->color = get_c(p->x, p->y, neox);
+	p->color = get_c(p->x, p->y, neox) * v.color_amp;
 	p->x *= v.zoom;
 	p->y *= v.zoom;
 	p->z *= v.zoom;

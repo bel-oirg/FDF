@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:49:12 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/10 10:41:22 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/12 10:31:13 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	parse_line(char *line, int cols, t_neox *node)
 	int		index;
 
 	p = ft_split(line, ' ');
-	node->line = my_malloc(sizeof(int **) * cols, 1);
+	node->line = my_malloc(sizeof(int *) * cols, 1);
 	index = -1;
-	while (p[++index])
+	while (p[++index] && cols--)
 	{
 		mini_p = ft_split(p[index], ',');
 		(node)->line[index][0] = ft_atoi(mini_p[0]);
@@ -77,14 +77,15 @@ void	parser(t_neox **neox, char **argv)
 	int		fd;
 	int		cols;
 
-	node = my_malloc(sizeof(t_neox), 1);
 	fd = open(argv[1], O_RDONLY);
-	(fd < 0) && (write(2, "Invalid Permissions\n", 20), exit(1), 0);
-	*neox = node;
+	(fd < 0) && (write(2, "Invalid Permissions\n", 21), exit(1), 0);
 	line = get_next_line(fd);
-	cols = get_cols_l(line);
+	(!line) && (close(fd), write(2, "Empty File\n", 12), exit(1), 0);
+	node = my_malloc(sizeof(t_neox), 1);
+	*neox = node;
 	while (line)
 	{
+		cols = get_cols_l(line);
 		parse_line(line, cols, node);
 		free(line);
 		line = get_next_line(fd);
@@ -95,6 +96,5 @@ void	parser(t_neox **neox, char **argv)
 		node->next->line = NULL;
 		node = node->next;
 	}
-	free(line);
 	close(fd);
 }
