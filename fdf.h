@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 11:59:46 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/13 13:45:31 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <math.h>
 
 # define BUFFER_SIZE 425161516
+
+# define DEFAULT_COL 0x000FF7
 
 # define ERR_MAP 		"[-] Incorrect MAP\n"
 # define ERR_PER 		"[-] Invalid Permissions\n"
@@ -87,7 +89,6 @@ typedef struct s_buddha
 	t_img	*img;
 }	t_buddha;
 
-
 int		ft_search(char *str);
 void	*my_malloc(size_t size, int mode);
 int		ft_strlen(char *str);
@@ -118,7 +119,6 @@ void	init_p(t_point *p, t_neox *neox, t_buddha v);
 
 //keyboard
 int		key_hook(int key, t_buddha *v);
-
 
 //ft_convert
 int		ft_convert(char *str);
