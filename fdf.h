@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 13:45:31 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:09:07 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 # define BUFFER_SIZE 425161516
 
-# define DEFAULT_COL 0x000FF7
+# define DEFAULT_COL 0x070FFF
 
 # define ERR_MAP 		"[-] Incorrect MAP\n"
 # define ERR_PER 		"[-] Invalid Permissions\n"
@@ -79,9 +79,12 @@ typedef struct s_buddha
 	int		shift_x;
 	int		shift_y;
 	int		color_amp;
+	int		all_bpp;
 	double	x_teta;
 	double	y_teta;
 	double	z_teta;
+	t_point	*s;
+	t_point	*e;
 	void	*mlx;
 	void	*win;
 	t_neox	*neox;
@@ -144,6 +147,6 @@ int		max_v(int a, int b);
 int		min_v(int a, int b);
 
 //algo
-void	picasso(t_buddha *v, t_neox *neox);
+void	picasso(t_buddha *v);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 00:06:44 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/11 09:27:59 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/13 14:06:10 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	mouse_clicked(int mouse_hook, int x, int y, t_buddha *v)
 	if (mouse_hook == 5)
 		if (v->zoom > 1)
 			v->zoom -= 1;
-	picasso(v, v->neox);
+	picasso(v);
 	return (0);
 }
 
@@ -46,7 +46,7 @@ int	mouse_move(int x, int y, t_buddha *v)
 	{
 		v->y_teta += (x - v->m->x0) * 0.002;
 		v->x_teta += (y - v->m->y0) * 0.002;
-		picasso(v, v->neox);
+		picasso(v);
 	}
 	return (0);
 }

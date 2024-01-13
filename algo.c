@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 03:21:38 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 11:50:25 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:14:40 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,26 +49,21 @@ static void	dda_algo(t_point s, t_point e, t_neox *neox, t_buddha v)
 	}
 }
 
-void	picasso(t_buddha *v, t_neox *neox)
+void	picasso(t_buddha *v)
 {
-	t_point		*s;
-	t_point		*e;
-
-	s = my_malloc(sizeof(t_point), 1);
-	e = my_malloc(sizeof(t_point), 1);
-	ft_bzero(v->img->addr, HEIGHT * WIDTH * (v->img->bpp / 8));
-	s->y = -1;
-	while (++s->y < v->rows)
+	ft_bzero(v->img->addr, v->all_bpp);
+	v->s->y = -1;
+	while (++v->s->y < v->rows)
 	{
-		s->x = -1;
-		while (++s->x < v->cols)
+		v->s->x = -1;
+		while (++v->s->x < v->cols)
 		{
-			if (s->x + 1 < v->cols)
-				(1) && (e->x = s->x + 1), (e->y = s->y),
-				dda_algo(*s, *e, neox, *v);
-			if (s->y + 1 < v->rows)
-				(1) && (e->x = s->x), (e->y = s->y + 1),
-				dda_algo(*s, *e, neox, *v);
+			if (v->s->x + 1 < v->cols)
+				(1) && (v->e->x = v->s->x + 1), (v->e->y = v->s->y),
+				dda_algo(*(v->s), *(v->e), v->neox, *v);
+			if (v->s->y + 1 < v->rows)
+				(1) && (v->e->x = v->s->x), (v->e->y = v->s->y + 1),
+				dda_algo(*(v->s), *(v->e), v->neox, *v);
 		}
 	}
 	mlx_put_image_to_window(v->mlx, v->win, v->img->img, 0, 0);
