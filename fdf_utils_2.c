@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:43 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 11:10:53 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/13 12:15:50 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	ft_search(char *str)
 	int		start;
 	int		i;
 	int		k;
-
 
 	size = ft_strlen(str);
 	i = 0;

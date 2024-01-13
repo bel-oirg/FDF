@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:37:17 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/12 10:07:18 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/13 12:16:15 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,3 @@ char	*get_next_line(int fd)
 	buf = NULL;
 	return (print_line(&out));
 }
-
-// int main(int argc, char *argv[])
-// {
-// 	int		fd;
-// 	char	*line;
-	
-// 	fd = open(argv[1], O_RDONLY);
-// 	while (1)
-// 	{
-// 		line = get_next_line(fd);
-// 		if (!line)
-// 			break ;
-// 		printf("%s\n", line);
-// 	}
-// 	close(fd);
-// }
