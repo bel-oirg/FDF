@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 03:21:38 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/11 18:39:42 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/13 11:50:25 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,4 @@ void	picasso(t_buddha *v, t_neox *neox)
 		}
 	}
 	mlx_put_image_to_window(v->mlx, v->win, v->img->img, 0, 0);
-	// usleep(10000000);
 }

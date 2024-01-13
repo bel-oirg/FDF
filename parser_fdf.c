@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:49:12 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/12 10:31:13 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/13 12:01:48 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_atoi(const char *str)
 		checker = 1;
 	}
 	if (str[i] || !checker)
-		write(1, "Invalid Content\n", ft_strlen("Invalid Content\n"));
+		(1) && (write(1, ERR_MAP, 19), my_malloc(0, 0), 0);
 	return (num * sign);
 }
 
@@ -78,9 +78,9 @@ void	parser(t_neox **neox, char **argv)
 	int		cols;
 
 	fd = open(argv[1], O_RDONLY);
-	(fd < 0) && (write(2, "Invalid Permissions\n", 21), exit(1), 0);
+	(fd < 0) && (write(2, ERR_PER, 25), exit(1), 0);
 	line = get_next_line(fd);
-	(!line) && (close(fd), write(2, "Empty File\n", 12), exit(1), 0);
+	(!line) && (close(fd), write(2, ERR_EMP_FILE, 16), exit(1), 0);
 	node = my_malloc(sizeof(t_neox), 1);
 	*neox = node;
 	while (line)
@@ -88,13 +88,13 @@ void	parser(t_neox **neox, char **argv)
 		cols = get_cols_l(line);
 		parse_line(line, cols, node);
 		free(line);
-		line = get_next_line(fd);
-		node->next = NULL;
+		(1) && (line = get_next_line(fd)), (node->next = NULL);
 		if (!line)
 			break ;
+		if (cols != get_cols_l(line))
+			(1) && (write(2, ERR_MAP, 19), close(fd), my_malloc(0, 0));
 		node->next = my_malloc(sizeof(t_neox), 1);
-		node->next->line = NULL;
-		node = node->next;
+		(1) && (node = node->next, node->line = NULL);
 	}
 	close(fd);
 }

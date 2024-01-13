@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:43 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/12 10:47:05 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/13 11:10:53 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int	ft_search(char *str)
 
 void	ft_check_args(int argc, char **argv)
 {
-
-	(argc != 2) && (write(2, "Invalid Arguments\n", 19), exit(1), 0);
-	(!ft_search(argv[1])) && (write(2, "Invalid file type\n", 19), exit(1), 0);
-	// (!get_cols(argv[1])) && (write(2, "Empty file\n", 12), exit(1), 0);
+	(argc != 2) && (write(2, ERR_ARGS, 23), exit(1), 0);
+	(!ft_search(argv[1])) && (write(2, ERR_TYP_FILE, 23), exit(1), 0);
 }

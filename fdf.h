@@ -6,14 +6,14 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/12 11:21:42 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/13 11:59:46 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define WIDTH	1600
+# define WIDTH	1200
 # define HEIGHT	900
 
 # include "minilibx_macos/mlx.h"
@@ -23,9 +23,13 @@
 # include <unistd.h>
 # include <math.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 425161516
-# endif
+# define BUFFER_SIZE 425161516
+
+# define ERR_MAP 		"[-] Incorrect MAP\n"
+# define ERR_PER 		"[-] Invalid Permissions\n"
+# define ERR_ARGS 		"[-] Invalid Arguments\n"
+# define ERR_TYP_FILE 	"[-] Invalid File Type\n"
+# define ERR_EMP_FILE 	"[-] Empty File\n"
 
 typedef struct s_neox
 {
