@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 19:09:07 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/14 11:32:09 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ typedef struct s_buddha
 	int		shift_y;
 	int		color_amp;
 	int		all_bpp;
+	int		*arr_z;
+	int		*arr_c;
 	double	x_teta;
 	double	y_teta;
 	double	z_teta;
@@ -118,7 +120,7 @@ int		mouse_move(int x, int y, t_buddha *v);
 
 //gradient
 int		grad_c(t_point s, t_point c, t_point e);
-void	init_p(t_point *p, t_neox *neox, t_buddha v);
+void	init_p(t_point *p, t_buddha v);
 
 //keyboard
 int		key_hook(int key, t_buddha *v);
@@ -128,7 +130,7 @@ int		ft_convert(char *str);
 
 //algo_utils
 void	ft_bzero(void	*s, size_t n);
-float	get_z(int x, int y, t_neox *neox);
+// float	get_z(int x, int y, t_neox *neox);
 int		get_rows(char *file_name);
 int		get_cols(char *file_name);
 

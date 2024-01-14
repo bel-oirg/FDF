@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 02:49:23 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 13:39:38 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/14 11:19:45 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void	ft_bzero(void	*s, size_t n)
 		((char *)s)[++index] = 0;
 }
 
-float	get_z(int x, int y, t_neox *neox)
-{
-	if (x < 0 || y < 0 || !neox)
-		return (-1);
-	while (y-- && neox)
-		neox = neox->next;
-	return ((float) neox->line[x][0]);
-}
+// float	get_z(int x, int y, t_neox *neox)
+// {
+// 	if (x < 0 || y < 0 || !neox)
+// 		return (-1);
+// 	while (y-- && neox)
+// 		neox = neox->next;
+// 	return ((float) neox->line[x][0]);
+// }

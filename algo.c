@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 03:21:38 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 19:14:40 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/14 11:47:40 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	my_mlx_pp(t_img *img, int x, int y, int color)
 
 	if (y < HEIGHT && x < WIDTH && x >= 0 && y >= 0)
 	{
-		dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
+		dst = img->addr + (y * img->line_len + x * 4);
 		*(unsigned int *)dst = color;
 	}
 }
@@ -29,9 +29,9 @@ static void	dda_algo(t_point s, t_point e, t_neox *neox, t_buddha v)
 	float	y_step;
 	t_point	c;
 	int		max_step;
-
-	init_p(&s, neox, v);
-	init_p(&e, neox, v);
+	(void)neox;
+	init_p(&s, v);
+	init_p(&e, v);
 	three_dim(&s.x, &s.y, &s.z, v);
 	three_dim(&e.x, &e.y, &e.z, v);
 	(1) && (s.x += v.shift_x, s.y += v.shift_y);
@@ -45,13 +45,17 @@ static void	dda_algo(t_point s, t_point e, t_neox *neox, t_buddha v)
 	while ((int)(c.x - e.x) || (int)(c.y - e.y))
 	{
 		my_mlx_pp(v.img, c.x, c.y, grad_c(s, c, e));
-		(1) && (c.x += x_step, c.y += y_step);
+		c.x += x_step;
+		c.y += y_step;
 	}
 }
 
 void	picasso(t_buddha *v)
 {
-	ft_bzero(v->img->addr, v->all_bpp);
+	mlx_destroy_image(v->mlx, v->img->img);
+	v->img->img = mlx_new_image(v->mlx, WIDTH, HEIGHT);
+	// v->img->addr = mlx_get_data_addr(v->img->img, &v->img->bpp,
+	// 		&v->img->line_len, &v->img->endian);
 	v->s->y = -1;
 	while (++v->s->y < v->rows)
 	{

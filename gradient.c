@@ -6,36 +6,38 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 00:07:48 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 13:39:34 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/14 11:41:08 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	get_c(int x, int y, t_neox *neox)
+int	get_c(t_buddha v, int current_p)
 {
 	int	color;
-	int	default_col;
 	int	z;
 
-	if (x < 0 || y < 0 || !neox)
-		return (-1);
-	default_col = 0x000FF7;
-	while (y-- && neox)
-		neox = neox->next;
-	z = neox->line[x][0];
-	color = neox->line[x][1];
+	z = v.arr_z[current_p];
+	color = v.arr_c[current_p];
 	if (!color)
-		(z > 0) && (color = 0xFF000F * z),
-		(z < 0) && (color = 0x00FF0F * -z),
-		(!z) && (color = default_col);
+	{
+		if (z > 0)
+			(color = 0xFF000F * z);
+		else if (z < 0)
+			(color = 0x00FF0F * -z);
+		else 
+			(color = DEFAULT_COL);
+	}
 	return (color);
 }
 
-void	init_p(t_point *p, t_neox *neox, t_buddha v)
+void	init_p(t_point *p, t_buddha v)
 {
-	p->z = get_z(p->x, p->y, neox);
-	p->color = get_c(p->x, p->y, neox) * v.color_amp;
+	int current_point;
+
+	current_point = (int)p->x + v.cols * (int)p->y;
+	p->z = v.arr_z[current_point];
+	p->color = get_c(v, current_point) * v.color_amp;
 	p->x *= v.zoom;
 	p->y *= v.zoom;
 	p->z *= v.zoom;
