@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/14 11:32:09 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/14 12:25:50 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,6 @@ int		key_hook(int key, t_buddha *v);
 int		ft_convert(char *str);
 
 //algo_utils
-void	ft_bzero(void	*s, size_t n);
-// float	get_z(int x, int y, t_neox *neox);
 int		get_rows(char *file_name);
 int		get_cols(char *file_name);
 
@@ -143,7 +141,6 @@ int		destroy_fdf(t_buddha *v);
 void	three_dim(float *x, float *y, float *z, t_buddha v);
 
 //math_utils
-int		diff(int x1, int x2);
 int		abs_v(int val);
 int		max_v(int a, int b);
 int		min_v(int a, int b);

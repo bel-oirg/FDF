@@ -6,16 +6,11 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 02:44:24 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/10 04:07:21 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/14 12:25:54 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int	diff(int x1, int x2)
-{
-	return (x2 - x1);
-}
 
 int	max_v(int a, int b)
 {

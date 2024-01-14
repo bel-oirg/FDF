@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 02:40:50 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 19:08:56 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/14 12:20:48 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 void	rot_x(float *y, float *z, double angle)
 {
 	int	y0;
-	int	z0;
 
 	y0 = *y;
-	z0 = *z;
 	*y = y0 * cos(angle) + *z * sin(angle);
 	*z = -y0 * sin(angle) + *z * cos(angle);
 }
@@ -26,10 +24,8 @@ void	rot_x(float *y, float *z, double angle)
 void	rot_y(float *x, float *z, double angle)
 {
 	int	x0;
-	int	z0;
 
 	x0 = *x;
-	z0 = *z;
 	*x = x0 * cos(angle) + *z * sin(angle);
 	*z = -x0 * sin(angle) + *z * cos(angle);
 }

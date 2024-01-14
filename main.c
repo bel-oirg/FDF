@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:37:23 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/14 11:38:13 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/14 12:05:10 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ void	init_v(t_buddha *v, char *file_name)
 void	stack_arr(t_buddha v)
 {
 	int	index;
-	int rows;
+	int	cols;
 	int	x;
 	
-	rows = v.rows;
+	cols = v.cols;
 	index = -1;
-	while (rows--)
+	while (v.neox)
 	{
 		x = -1;
-		while (++x < v.cols)
+		while (++x < cols)
 		{
 			v.arr_z[++index] = v.neox->line[x][0];
 			v.arr_c[index] = v.neox->line[x][1];

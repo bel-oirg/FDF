@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 03:21:38 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/14 11:47:40 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/14 12:09:55 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ static void	my_mlx_pp(t_img *img, int x, int y, int color)
 	}
 }
 
-static void	dda_algo(t_point s, t_point e, t_neox *neox, t_buddha v)
+static void	dda_algo(t_point s, t_point e, t_buddha v)
 {
 	float	x_step;
 	float	y_step;
 	t_point	c;
 	int		max_step;
-	(void)neox;
+
 	init_p(&s, v);
 	init_p(&e, v);
 	three_dim(&s.x, &s.y, &s.z, v);
@@ -54,8 +54,6 @@ void	picasso(t_buddha *v)
 {
 	mlx_destroy_image(v->mlx, v->img->img);
 	v->img->img = mlx_new_image(v->mlx, WIDTH, HEIGHT);
-	// v->img->addr = mlx_get_data_addr(v->img->img, &v->img->bpp,
-	// 		&v->img->line_len, &v->img->endian);
 	v->s->y = -1;
 	while (++v->s->y < v->rows)
 	{
@@ -64,10 +62,10 @@ void	picasso(t_buddha *v)
 		{
 			if (v->s->x + 1 < v->cols)
 				(1) && (v->e->x = v->s->x + 1), (v->e->y = v->s->y),
-				dda_algo(*(v->s), *(v->e), v->neox, *v);
+				dda_algo(*(v->s), *(v->e), *v);
 			if (v->s->y + 1 < v->rows)
 				(1) && (v->e->x = v->s->x), (v->e->y = v->s->y + 1),
-				dda_algo(*(v->s), *(v->e), v->neox, *v);
+				dda_algo(*(v->s), *(v->e), *v);
 		}
 	}
 	mlx_put_image_to_window(v->mlx, v->win, v->img->img, 0, 0);
