@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 00:07:48 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/15 11:39:27 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:09:28 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	get_c(t_buddha v, int current_p)
 			(color = 0xFF000F * z);
 		else if (z < 0)
 			(color = 0x00FF0F * -z);
-		else 
+		else
 			(color = DEFAULT_COL);
 	}
 	return (color);
@@ -33,12 +33,11 @@ int	get_c(t_buddha v, int current_p)
 
 void	init_p(t_point *p, t_buddha v)
 {
-	int current_point;
+	int	current_point;
 
 	current_point = (int)p->x + v.cols * (int)p->y;
 	p->z = v.arr_z[current_point];
 	p->color = get_c(v, current_point) * v.color_amp;
-	// p->color = v.arr_c[current_point];
 	p->x *= v.zoom;
 	p->y *= v.zoom;
 	p->z *= v.zoom;

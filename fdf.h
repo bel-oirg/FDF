@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/15 12:27:41 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:22:17 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@
 
 # define DEFAULT_COL 0x070FFF
 
-# define ERR_MAP 		"[-] Incorrect MAP\n"
-# define ERR_PER 		"[-] Invalid Permissions\n"
-# define ERR_ARGS 		"[-] Invalid Arguments\n"
-# define ERR_TYP_FILE 	"[-] Invalid File Type\n"
 # define ERR_EMP_FILE 	"[-] Empty File\n"
+# define ERR_MAP 		"[-] Incorrect MAP\n"
+# define ERR_TYP_FILE 	"[-] Invalid File Type\n"
+# define ERR_ARGS 		"[-] Invalid Arguments\n"
 # define ERR_COL		"[-] Invalid Color Code\n"
+# define ERR_PER 		"[-] Invalid Permissions\n"
 
 typedef struct s_neox
 {
@@ -135,7 +135,6 @@ int		get_cols(char *file_name);
 
 //cleaning
 void	f_matrix(char **str);
-void	ft_error(void);
 int		destroy_fdf(t_buddha *v);
 
 //three_dim

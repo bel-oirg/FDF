@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 01:37:23 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/15 13:08:47 by bel-oirg         ###   ########.fr       */
+/*   Created: 2024/01/15 12:32:02 by bel-oirg          #+#    #+#             */
+/*   Updated: 2024/01/15 13:08:02 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@ void	stack_arr(t_buddha v)
 	}
 }
 
-int	key_hook_man(int key, t_buddha *v)
-{
-	(key == 53) && (destroy_fdf(v));
-	return (0);
-}
-
 int	main(int ac, char **argv)
 {
 	t_buddha	*v;
@@ -62,7 +56,10 @@ int	main(int ac, char **argv)
 	v->s = my_malloc(sizeof(t_point), 1);
 	v->e = my_malloc(sizeof(t_point), 1);
 	picasso(v);
-	mlx_hook(v->win, 2, 2, key_hook_man, v);
+	mlx_hook(v->win, 2, 2, key_hook, v);
+	mlx_hook(v->win, 4, 2, mouse_clicked, v);
+	mlx_hook(v->win, 6, 2, mouse_move, v);
+	mlx_hook(v->win, 5, 2, mouse_release, v);
 	mlx_hook(v->win, 17, 2, destroy_fdf, v);
 	mlx_loop(v->mlx);
 }

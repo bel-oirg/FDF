@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 09:17:11 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 11:29:17 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/15 13:22:29 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,4 @@ void	f_matrix(char **str)
 	}
 	free(str);
 	str = NULL;
-}
-
-void	ft_error(void)
-{
-	write(2, ERR_MAP, 19);
-	my_malloc(0, 0);
 }
