@@ -6,15 +6,15 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/15 13:22:17 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/15 16:08:15 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define WIDTH	1200
-# define HEIGHT	900
+# define WIDTH	1920
+# define HEIGHT	1080
 
 # include "minilibx_macos/mlx.h"
 # include <stdio.h>
