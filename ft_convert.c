@@ -6,43 +6,29 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:37:04 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/09 03:39:12 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:20:26 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	ft_pow(int x, int y)
-{
-	if (x == 0)
-		return (0);
-	else if (y == 1)
-		return (x);
-	else if (y == 0)
-		return (1);
-	return ((x * x) * ft_pow(x, y - 2));
-}
-
 int	ft_convert(char *str)
 {
 	int	i;
-	int	ret;
-	int	y;
+	int num;
 
-	ret = 0;
-	i = 2;
-	y = ft_strlen(str) - 3;
-	while (str && str[i])
+	if (ft_strlen(str) < 2)
+		return (0);
+	i = 1;
+	num = 0;
+	while (str && str[++i])
 	{
 		if (str[i] >= '0' && str[i] <= '9')
-			ret += ((str[i] - 48) * ft_pow(16, y));
-		else if ((str[i] >= 'a' && str[i] <= 'f')
-			|| (str[i] >= 'A' && str[i] <= 'F'))
-			ret += ((str[i] - 'a' + 10) * ft_pow(16, y));
-		else
-			ft_error();
-		i++;
-		--y;
+			num = num * 16 + str[i] - '0';
+		else if (str[i] >= 'a' && str[i] <= 'f')
+			num = num * 16 + str[i] - 'a' + 10;
+		else if (str[i] >= 'A' && str[i] <= 'F')
+			num = num * 16 + str[i] - 'A' + 10;
 	}
-	return (ret);
+	return (num);
 }

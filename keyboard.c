@@ -6,13 +6,13 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 02:45:39 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 14:04:01 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:08:54 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	parralel(t_buddha *v)
+static int	parralel(t_buddha *v)
 {
 	v->x_teta = 0;
 	v->y_teta = 0;
@@ -20,7 +20,7 @@ int	parralel(t_buddha *v)
 	return (1);
 }
 
-int	isometric(t_buddha *v)
+static int	isometric(t_buddha *v)
 {
 	v->x_teta = -0.366;
 	v->y_teta = -0.236;

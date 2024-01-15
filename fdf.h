@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/14 12:25:50 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:55:30 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,8 @@ int		min_v(int a, int b);
 
 //algo
 void	picasso(t_buddha *v);
+
+//init_v
+void	init_v(t_buddha *v, char *file_name);
 
 #endif

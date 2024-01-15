@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 00:07:48 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/14 12:34:26 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/15 11:39:27 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_p(t_point *p, t_buddha v)
 	current_point = (int)p->x + v.cols * (int)p->y;
 	p->z = v.arr_z[current_point];
 	p->color = get_c(v, current_point) * v.color_amp;
+	// p->color = v.arr_c[current_point];
 	p->x *= v.zoom;
 	p->y *= v.zoom;
 	p->z *= v.zoom;
@@ -62,8 +63,6 @@ int	grad_c(t_point s, t_point c, t_point e)
 	int		green;
 	int		blue;
 
-	if (c.color == DEFAULT_COL)
-		return (c.color);
 	if (abs_v(s.x - e.x) > abs_v(s.y - e.y))
 		percent = get_percent(s.x, c.x, e.x);
 	else
