@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/15 11:55:30 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:27:41 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <unistd.h>
 # include <math.h>
 
-# define BUFFER_SIZE 425161516
+# define BUFFER_SIZE 2147479540
 
 # define DEFAULT_COL 0x070FFF
 
@@ -32,6 +32,7 @@
 # define ERR_ARGS 		"[-] Invalid Arguments\n"
 # define ERR_TYP_FILE 	"[-] Invalid File Type\n"
 # define ERR_EMP_FILE 	"[-] Empty File\n"
+# define ERR_COL		"[-] Invalid Color Code\n"
 
 typedef struct s_neox
 {

@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:37:04 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/15 12:20:26 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/15 12:26:59 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	ft_convert(char *str)
 			num = num * 16 + str[i] - 'a' + 10;
 		else if (str[i] >= 'A' && str[i] <= 'F')
 			num = num * 16 + str[i] - 'A' + 10;
+		else
+			write(2, ERR_COL, 24), my_malloc(0, 0);
 	}
 	return (num);
 }
