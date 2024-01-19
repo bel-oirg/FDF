@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:49:12 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/15 11:59:26 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/17 22:00:59 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ void	parse_line(char *line, int cols, t_neox *node)
 	{
 		mini_p = ft_split(p[index], ',');
 		(node)->line[index][0] = ft_atoi(mini_p[0]);
-		if (ft_convert(mini_p[1]))
-			(node)->line[index][1] = ft_convert(mini_p[1]);
-		else
-			(node)->line[index][1] = 0;
+		(node)->line[index][1] = ft_convert(mini_p[1]);
 		f_matrix(mini_p);
 	}
 	f_matrix(p);

@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 02:45:39 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/15 16:05:57 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/16 18:25:56 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	key_hook(int key, t_buddha *v)
 	(key == 34) && (isometric(v));
 	(key == 35) && (parralel(v));
 	(key == 53) && (destroy_fdf(v));
-	// mlx_clear_window(v->mlx, v->win);
 	picasso(v);
 	return (0);
 }

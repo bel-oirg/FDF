@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 01:36:58 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/15 16:08:15 by bel-oirg         ###   ########.fr       */
+/*   Created: 2024/01/16 13:11:04 by bel-oirg          #+#    #+#             */
+/*   Updated: 2024/01/18 16:14:04 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # define WIDTH	1920
 # define HEIGHT	1080
 
-# include "minilibx_macos/mlx.h"
-# include <stdio.h>
+# include <mlx.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
@@ -80,9 +79,9 @@ typedef struct s_buddha
 	int		shift_x;
 	int		shift_y;
 	int		color_amp;
-	int		all_bpp;
 	int		*arr_z;
 	int		*arr_c;
+	int		all_bpp;
 	double	x_teta;
 	double	y_teta;
 	double	z_teta;
@@ -95,7 +94,6 @@ typedef struct s_buddha
 	t_img	*img;
 }	t_buddha;
 
-int		ft_search(char *str);
 void	*my_malloc(size_t size, int mode);
 int		ft_strlen(char *str);
 int		ft_atoi(const char *str);
@@ -114,17 +112,9 @@ char	*get_next_line(int fd);
 //parser_fdf
 void	parser(t_neox **neox, char **argv);
 
-//mouse
-int		mouse_release(int mouse_hook, int x, int y, t_buddha *v);
-int		mouse_clicked(int mouse_hook, int x, int y, t_buddha *v);
-int		mouse_move(int x, int y, t_buddha *v);
-
 //gradient
 int		grad_c(t_point s, t_point c, t_point e);
 void	init_p(t_point *p, t_buddha v);
-
-//keyboard
-int		key_hook(int key, t_buddha *v);
 
 //ft_convert
 int		ft_convert(char *str);

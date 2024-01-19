@@ -6,13 +6,13 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 01:36:43 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 13:43:12 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:46:30 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_search(char *str)
+static int	ft_search(char *str)
 {
 	char	ptr[4];
 	int		size;

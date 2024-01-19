@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 03:21:38 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/15 15:52:37 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/18 16:19:07 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	my_mlx_pp(t_img *img, int x, int y, int color)
 
 	if (y < HEIGHT && x < WIDTH && x >= 0 && y >= 0)
 	{
-		dst = img->addr + (y * img->line_len + x * 4);
+		dst = img->addr + (y * img->line_len + x * (img->bpp / 8));
 		*(unsigned int *)dst = color;
 	}
 }
@@ -50,10 +50,18 @@ static void	dda_algo(t_point s, t_point e, t_buddha v)
 	}
 }
 
+static void	ft_bzero(void	*s, size_t n)
+{
+	int	index;
+
+	index = -1;
+	while (n--)
+		((char *)s)[++index] = 0;
+}
+
 void	picasso(t_buddha *v)
 {
-	mlx_destroy_image(v->mlx, v->img->img);
-	v->img->img = mlx_new_image(v->mlx, WIDTH, HEIGHT);
+	ft_bzero(v->img->addr, v->all_bpp);
 	v->s->y = -1;
 	while (++v->s->y < v->rows)
 	{

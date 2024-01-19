@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:52:19 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/15 11:55:53 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/18 16:13:31 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	init_v(t_buddha *v, char *file_name)
 			&v->img->line_len, &v->img->endian);
 	v->rows = get_rows(file_name);
 	v->cols = get_cols(file_name);
+	v->all_bpp = HEIGHT * WIDTH * (v->img->bpp / 8);
 	v->x_teta = -0.366;
 	v->y_teta = -0.236;
 	v->z_teta = 0;
 	v->color_amp = 1;
-	v->all_bpp = HEIGHT * WIDTH * (v->img->bpp / 8);
 	zoom_centred(v);
 	v->m->is_pressed = 0;
 }

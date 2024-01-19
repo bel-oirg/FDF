@@ -6,11 +6,11 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 12:32:02 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/15 13:08:02 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:16:13 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	stack_arr(t_buddha v)
 {

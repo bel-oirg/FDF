@@ -6,7 +6,7 @@
 /*   By: bel-oirg <bel-oirg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 00:06:44 by bel-oirg          #+#    #+#             */
-/*   Updated: 2024/01/13 14:06:10 by bel-oirg         ###   ########.fr       */
+/*   Updated: 2024/01/18 16:20:57 by bel-oirg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	mouse_clicked(int mouse_hook, int x, int y, t_buddha *v)
 	(void)x;
 	(void)y;
 	if (mouse_hook == 1)
-		v->m->is_pressed = 1;
+		if (x > 0 && y > 0 && HEIGHT > y && WIDTH > x)
+			v->m->is_pressed = 1;
 	if (mouse_hook == 4)
 		v->zoom += 1;
 	if (mouse_hook == 5)
